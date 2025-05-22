@@ -73,7 +73,7 @@ Este proyecto consistió en **refactorizar completamente una arquitectura en AWS
                     <li><a href="#creación-del-grupo-de-subredes">Creación del Grupo de Subredes</a></li>
                     <li><a href="#creación-del-clúster-de-memcached">Creación del clúster de Memcached</a></li>
                     <li><a href="#configuración-del-clúster">Configuración del clúster</a></li>
-                    <li><a href="#espera-y-prueba">Espera y prueba</a></li>
+                    <li><a href="#espera-y-prueba">Esperamos y probamos</a></li>
                 </ul>
             </li>
             <li>
@@ -181,7 +181,7 @@ Este proyecto consistió en **refactorizar completamente una arquitectura en AWS
                 <ul>
                     <li><a href="#resumen-final-del-proyecto">Resumen Final del Proyecto</a></li>
                     <li><a href="#consideraciones-finales">Consideraciones Finales</a></li>
-                    <li><a href="#desafios-enfrentados">Desafíos Enfrentados</a></li>
+                    <li><a href="#desafíos-enfrentados">Desafíos Enfrentados</a></li>
                     <li><a href="#lecciones-aprendidas">Lecciones Aprendidas</a></li>
                     <li><a href="#pros-y-contras-de-este-enfoque">Pros y Contras de este enfoque</a></li>
                     <li><a href="#próximos-pasos-para-la-evolución-del-proyecto">Próximos Pasos para la Evolución del
