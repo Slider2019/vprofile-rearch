@@ -216,7 +216,7 @@ Ahora, en esta fase... **¡es hora de refactorizar!** Vamos a rediseñar los ser
 
 ---
 
-## 2.- El Problema del Enfoque Tradicional
+## El Problema del Enfoque Tradicional
 
 Supongamos que tenemos muchos servicios (DB, App, Web, DNS, etc.) ejecutándose en:
 
@@ -399,7 +399,7 @@ Será perfecto para acelerar la carga de nuestro frontend, mejorar la experienci
 
 ----------
 
-## 3.- Comparación Lift y Shift vs Refactorización
+## Comparación Lift y Shift vs Refactorización
 
 | Componente Tradicional (Lift & Shift) | Refactorizado en AWS     |
 |--------------------------------------|---------------------------|
@@ -417,7 +417,7 @@ Será perfecto para acelerar la carga de nuestro frontend, mejorar la experienci
 
 ---
 
-## 4.- Arquitectura del Proyecto
+## Arquitectura del Proyecto
 
 1.  🌐 Usuario accede a la **URL**
 2.  🌍 Se resuelve vía **Route 53**
@@ -437,7 +437,7 @@ Será perfecto para acelerar la carga de nuestro frontend, mejorar la experienci
 
 ---
 
-## 5.- Flujo de Ejecución del Proyecto
+## Flujo de Ejecución del Proyecto
 
 1.  Iniciar sesión en AWS Console
 2.  Crear par de claves para EC2 de Beanstalk 🔐
@@ -471,7 +471,7 @@ Será perfecto para acelerar la carga de nuestro frontend, mejorar la experienci
 
 ---
 
-## 6.- Inicio de la construcción del Proyecto
+## Inicio de la construcción del Proyecto
 
 ### 1.- Configuración de Seguridad para Backend en AWS Parte de Arquitectura Beanstalk
 
