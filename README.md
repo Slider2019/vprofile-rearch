@@ -203,7 +203,7 @@ Este proyecto consistió en **refactorizar completamente una arquitectura en AWS
 
 ---
 
-## 1.- Objetivo del proyecto
+## Objetivo del proyecto
 
 Este proyecto es una evolución del anterior donde desplegué la aplicación **vProfile** tanto localmente como en la nube. En ese primer enfoque apliqué la estrategia **Lift & Shift** —es decir, mover mi stack tal como está, sin cambios, hacia AWS usando instancias EC2.
 
