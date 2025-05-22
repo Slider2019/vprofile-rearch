@@ -15,159 +15,184 @@ Este proyecto consistió en **refactorizar completamente una arquitectura en AWS
 
 <!-- Tabla de contenidos -->
 <details close>
-  <summary>Tabla de Contenidos</summary>
-<ul>
-  <li><a href="#objetivo-del-proyecto">1.- Objetivo del proyecto</a></li>
-  <li>
-    <a href="#el-problema-del-enfoque-tradicional">2.- El Problema del Enfoque Tradicional</a>
-    <ul>
-      <li><a href="#solución-pasar-de-iaas-a-paas-saas">Solución Pasar de IaaS a PaaS SaaS</a></li>
-      <li><a href="#servicios-que-se-usarán-en-aws">Servicios que se usarán en AWS</a></li>
-    </ul>
-  </li>
-  <li><a href="#comparación-lift-y-shift-vs-refactorización">3.- Comparación Lift y Shift vs Refactorización</a></li>
-  <li><a href="#arquitectura-del-proyecto">4.- Arquitectura del proyecto</a></li>
-  <li><a href="#flujo-de-ejecución-del-proyecto">5.- Flujo de Ejecución del Proyecto</a></li>
-  <li>
-    <a href="#inicio-de-la-construcción-del-proyecto">6.- Inicio de la construcción del Proyecto</a>
-    <ul>
-      <li><a href="#configuración-de-seguridad-para-backend-en-aws-parte-de-arquitectura-beanstalk">Configuración de Seguridad para Backend en AWS Parte de Arquitectura Beanstalk</a></li>
-      <li><a href="#arquitectura-general">Arquitectura General</a></li>
-      <li><a href="#servicios-backend-involucrados">Servicios Backend Involucrados</a></li>
-      <li><a href="#reglas-del-grupo-de-seguridad-del-backend">Reglas del Grupo de Seguridad del Backend</a></li>
-      <li><a href="#pasos-en-la-consola-de-aws">Pasos en la Consola de AWS</a></li>
-      <li><a href="#crear-el-grupo-de-seguridad-backend">Crear el grupo de seguridad Backend</a></li>
-      <li><a href="#agregar-regla-de-entrada-interna">Agregar regla de entrada interna</a></li>
-      <li><a href="#crear-par-de-claves-pem">Crear Par de Claves PEM</a></li>
-    </ul>
-  </li>
-  <li>
-    <a href="#creación-de-una-base-de-datos-con-amazon-rds-para-el-proyecto">7.- Creación de una Base de Datos con Amazon RDS para el Proyecto</a>
-    <ul>
-      <li><a href="#por-qué-usar-rds">Por qué usar RDS</a></li>
-      <li><a href="#paso-1-buscar-y-acceder-a-amazon-rds">Paso 1 Buscar y acceder a Amazon RDS</a></li>
-      <li><a href="#paso-2-entendiendo-los-grupos-de-parámetros">Paso 2 Entendiendo los Grupos de Parámetros</a></li>
-      <li><a href="#crear-un-grupo-de-parámetros">Crear un grupo de parámetros</a></li>
-      <li><a href="#paso-3-crear-un-db-subnet-group">Paso 3 Crear un DB Subnet Group</a></li>
-      <li><a href="#crear-un-grupo-de-subredes">Crear un grupo de subredes</a></li>
-      <li><a href="#paso-4-crear-la-instancia-de-base-de-datos">Paso 4 Crear la instancia de base de datos</a></li>
-      <li><a href="#credenciales">Credenciales</a></li>
-      <li><a href="#configuración-de-instancia">Configuración de instancia</a></li>
-      <li><a href="#paso-5-configuración-de-conectividad">Paso 5 Configuración de conectividad</a></li>
-      <li><a href="#configuración-adicional">Configuración adicional</a></li>
-      <li><a href="#paso-final-crear-la-base-de-datos">Paso Final Crear la base de datos</a></li>
-    </ul>
-  </li>
-  <li>
-    <a href="#creación-de-elasticache-memcached-en-aws">8.- Creación de ElastiCache Memcached en AWS</a>
-    <ul>
-      <li><a href="#acceso-al-servicio-elasticache">Acceso al servicio ElastiCache</a></li>
-      <li><a href="#creación-del-grupo-de-parámetros">Creación del Grupo de Parámetros</a></li>
-      <li><a href="#creación-del-grupo-de-subredes">Creación del Grupo de Subredes</a></li>
-      <li><a href="#creación-del-clúster-de-memcached">Creación del clúster de Memcached</a></li>
-      <li><a href="#configuración-del-clúster">Configuración del clúster</a></li>
-      <li><a href="#espera-y-prueba">Espera y prueba</a></li>
-    </ul>
-  </li>
-  <li>
-    <a href="#creación-de-amazon-mq-con-rabbitmq-en-aws">9.- Creación de Amazon MQ con RabbitMQ en AWS</a>
-    <ul>
-      <li><a href="#qué-es-amazon-mq">Qué es Amazon MQ</a></li>
-      <li><a href="#requisitos">Requisitos</a></li>
-      <li><a href="#paso-a-paso-para-crear-un-broker-de-rabbitmq">Paso a Paso para Crear un Broker de RabbitMQ</a></li>
-      <li><a href="#buscar-el-servicio">Buscar el servicio</a></li>
-      <li><a href="#seleccionamos-rabbitmq">Seleccionamos RabbitMQ</a></li>
-      <li><a href="#configuración-básica">Configuración básica</a></li>
-      <li><a href="#configuración-adicional">Configuración adicional</a></li>
-      <li><a href="#revisión-y-creación">Revisión y creación</a></li>
-    </ul>
-  </li>
-  <li>
-    <a href="#accediendo-y-configurando-rds-desde-una-ec2">10.- Accediendo y Configurando RDS desde una EC2</a>
-    <ul>
-      <li><a href="#inicialización-de-la-base-de-datos-rds">Inicialización de la Base de Datos RDS</a></li>
-      <li><a href="#estado-inicial">Estado inicial</a></li>
-      <li><a href="#crear-instancia-ec2-temporal">Crear instancia EC2 temporal</a></li>
-      <li><a href="#conexión-a-mysql-y-despliegue-del-esquema">Conexión a MySQL y despliegue del esquema</a></li>
-      <li><a href="#obtener-datos-de-acceso-a-la-base-de-datos">Obtener datos de acceso a la base de datos</a></li>
-      <li><a href="#conectar-a-mysql-desde-la-instancia">Conectar a MySQL desde la instancia</a></li>
-      <li><a href="#clonar-el-repositorio-del-proyecto">Clonar el repositorio del proyecto</a></li>
-      <li><a href="#ejecutar-el-script-sql">Ejecutar el script SQL</a></li>
-      <li><a href="#verificar">Verificar</a></li>
-      <li><a href="#limpieza">Limpieza</a></li>
-    </ul>
-  </li>
-  <li>
-    <a href="#beanstalk">11.- BeanStalk</a>
-    <ul>
-      <li><a href="#configuración-de-elastic-beanstalk">Configuración de Elastic Beanstalk</a></li>
-      <li><a href="#creación-de-roles-iam-para-beanstalk">Creación de roles IAM para Beanstalk</a></li>
-      <li><a href="#pasos">Pasos</a></li>
-      <li><a href="#creación-del-entorno-beanstalk">Creación del entorno Beanstalk</a></li>
-      <li><a href="#configuración-personalizada">Configuración personalizada</a></li>
-      <li><a href="#configuración-de-instancias-y-escalado">Configuración de instancias y escalado</a></li>
-      <li><a href="#políticas-de-despliegue">Políticas de despliegue</a></li>
-      <li><a href="#notas-finales">Notas finales</a></li>
-    </ul>
-  </li>
-  <li>
-    <a href="#configuración-de-entorno-beanstalk-y-conexión-con-servicios-de-backend">
-      12.- Configuración de entorno Beanstalk y conexión con servicios de backend
-    </a>
-    <ul>
-      <li><a href="#pasos-para-conectar-el-entorno-beanstalk-con-los-servicios-de-backend">Pasos para conectar el entorno Beanstalk con los servicios de backend</a></li>
-      <li><a href="#verificación-del-entorno-beanstalk">Verificación del entorno Beanstalk</a></li>
-      <li><a href="#verificación-de-los-servicios-backend">Verificación de los servicios backend</a></li>
-      <li><a href="#configuración-del-grupo-de-seguridad">Configuración del grupo de seguridad</a></li>
-      <li><a href="#guardar-cambios">Guardar cambios</a></li>
-      <li><a href="#resumen-y-preparación-para-el-siguiente-paso">Resumen y preparación para el siguiente paso</a></li>
-    </ul>
-  </li>
-  <li>
-    <a href="#construcción-del-artefacto-y-configuración-del-backend">13.- Construcción del Artefacto y Configuración del Backend</a>
-    <ul>
-      <li><a href="#recolección-de-información-del-backend">Recolección de información del backend</a></li>
-      <li><a href="#tips">Tips</a></li>
-      <li><a href="#preparar-el-código-fuente">Preparar el código fuente</a></li>
-      <li><a href="#clonación-del-repositorio">Clonación del repositorio</a></li>
-      <li><a href="#actualización-del-archivo-application-properties">Actualización del archivo application properties</a></li>
-      <li><a href="#construcción-del-artefacto-war">Construcción del artefacto WAR</a></li>
-      <li><a href="#verificar-versiones">Verificar versiones</a></li>
-      <li><a href="#compilar-proyecto">Compilar proyecto</a></li>
-      <li><a href="#despliegue-en-elastic-beanstalk">Despliegue en Elastic Beanstalk</a></li>
-      <li><a href="#subida-del-artefacto">Subida del artefacto</a></li>
-      <li><a href="#proceso-de-despliegue">Proceso de despliegue</a></li>
-      <li><a href="#habilitar-https-con-certificado-acm">Habilitar HTTPS con certificado ACM</a></li>
-      <li><a href="#agregar-listener-https-443">Agregar listener HTTPS 443</a></li>
-      <li><a href="#asociar-dominio-personalizado-godaddy-u-otro">Asociar dominio personalizado GoDaddy u otro</a></li>
-      <li><a href="#en-godaddy">En GoDaddy</a></li>
-      <li><a href="#verificación-final">Verificación final</a></li>
-    </ul>
-  </li>
-  <li>
-    <a href="#aws-cloudfront-introducción-y-configuración">14.- AWS CloudFront Introducción y Configuración</a>
-    <ul>
-      <li><a href="#qué-es-aws-cloudfront">Qué es AWS CloudFront</a></li>
-      <li><a href="#por-qué-necesitamos-una-cdn">Por qué necesitamos una CDN</a></li>
-      <li><a href="#cómo-se-integra-cloudfront">Cómo se integra CloudFront</a></li>
-      <li><a href="#pasos-para-configurar-una-distribución-cloudfront">Pasos para configurar una distribución CloudFront</a></li>
-      <li><a href="#actualizar-dns-en-godaddy">Actualizar DNS en GoDaddy</a></li>
-      <li><a href="#resultado-final">Resultado Final</a></li>
-    </ul>
-  </li>
-  <li>
-    <a href="#resumen-y-consideraciones-finales">15.- Resumen y consideraciones Finales</a>
-    <ul>
-      <li><a href="#resumen-final-del-proyecto">Resumen Final del Proyecto</a></li>
-      <li><a href="#consideraciones-finales">Consideraciones Finales</a></li>
-      <li><a href="#desafios-enfrentados">Desafíos Enfrentados</a></li>
-      <li><a href="#lecciones-aprendidas">Lecciones Aprendidas</a></li>
-      <li><a href="#pros-y-contras-de-este-enfoque">Pros y Contras de este enfoque</a></li>
-      <li><a href="#próximos-pasos-para-la-evolución-del-proyecto">Próximos Pasos para la Evolución del Proyecto</a></li>
-    </ul>
-  </li>
-  <li><a href="#contacto">16.- Contacto</a></li>
-</ul>
+    <summary>Tabla de Contenidos</summary>
+    <ol>
+        <ul>
+            <li><a href="#objetivo-del-proyecto">1.- Objetivo del proyecto</a></li>
+            <li>
+                <a href="#el-problema-del-enfoque-tradicional">2.- El Problema del Enfoque Tradicional</a>
+                <ul>
+                    <li><a href="#solución-pasar-de-iaas-a-paas-saas">Solución Pasar de IaaS a PaaS SaaS</a></li>
+                    <li><a href="#servicios-que-se-usarán-en-aws">Servicios que se usarán en AWS</a></li>
+                </ul>
+            </li>
+            <li><a href="#comparación-lift-y-shift-vs-refactorización">3.- Comparación Lift y Shift vs
+                    Refactorización</a></li>
+            <li><a href="#arquitectura-del-proyecto">4.- Arquitectura del proyecto</a></li>
+            <li><a href="#flujo-de-ejecución-del-proyecto">5.- Flujo de Ejecución del Proyecto</a></li>
+            <li>
+                <a href="#inicio-de-la-construcción-del-proyecto">6.- Inicio de la construcción del Proyecto</a>
+                <ul>
+                    <li><a href="#configuración-de-seguridad-para-backend-en-aws-parte-de-arquitectura-beanstalk">Configuración
+                            de Seguridad para Backend en AWS Parte de Arquitectura Beanstalk</a></li>
+                    <li><a href="#arquitectura-general">Arquitectura General</a></li>
+                    <li><a href="#servicios-backend-involucrados">Servicios Backend Involucrados</a></li>
+                    <li><a href="#reglas-del-grupo-de-seguridad-del-backend">Reglas del Grupo de Seguridad del
+                            Backend</a></li>
+                    <li><a href="#pasos-en-la-consola-de-aws">Pasos en la Consola de AWS</a></li>
+                    <li><a href="#crear-el-grupo-de-seguridad-backend">Crear el grupo de seguridad Backend</a></li>
+                    <li><a href="#agregar-regla-de-entrada-interna">Agregar regla de entrada interna</a></li>
+                    <li><a href="#crear-par-de-claves-pem">Crear Par de Claves PEM</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#creación-de-una-base-de-datos-con-amazon-rds-para-el-proyecto">7.- Creación de una Base de
+                    Datos con Amazon RDS para el Proyecto</a>
+                <ul>
+                    <li><a href="#por-qué-usar-rds">Por qué usar RDS</a></li>
+                    <li><a href="#paso-1-buscar-y-acceder-a-amazon-rds">Paso 1 Buscar y acceder a Amazon RDS</a></li>
+                    <li><a href="#paso-2-entendiendo-los-grupos-de-parámetros">Paso 2 Entendiendo los Grupos de
+                            Parámetros</a></li>
+                    <li><a href="#crear-un-grupo-de-parámetros">Crear un grupo de parámetros</a></li>
+                    <li><a href="#paso-3-crear-un-db-subnet-group">Paso 3 Crear un DB Subnet Group</a></li>
+                    <li><a href="#crear-un-grupo-de-subredes">Crear un grupo de subredes</a></li>
+                    <li><a href="#paso-4-crear-la-instancia-de-base-de-datos">Paso 4 Crear la instancia de base de
+                            datos</a></li>
+                    <li><a href="#credenciales">Credenciales</a></li>
+                    <li><a href="#configuración-de-instancia">Configuración de instancia</a></li>
+                    <li><a href="#paso-5-configuración-de-conectividad">Paso 5 Configuración de conectividad</a></li>
+                    <li><a href="#configuración-adicional">Configuración adicional</a></li>
+                    <li><a href="#paso-final-crear-la-base-de-datos">Paso Final Crear la base de datos</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#creación-de-elasticache-memcached-en-aws">8.- Creación de ElastiCache Memcached en AWS</a>
+                <ul>
+                    <li><a href="#acceso-al-servicio-elasticache">Acceso al servicio ElastiCache</a></li>
+                    <li><a href="#creación-del-grupo-de-parámetros">Creación del Grupo de Parámetros</a></li>
+                    <li><a href="#creación-del-grupo-de-subredes">Creación del Grupo de Subredes</a></li>
+                    <li><a href="#creación-del-clúster-de-memcached">Creación del clúster de Memcached</a></li>
+                    <li><a href="#configuración-del-clúster">Configuración del clúster</a></li>
+                    <li><a href="#espera-y-prueba">Espera y prueba</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#creación-de-amazon-mq-con-rabbitmq-en-aws">9.- Creación de Amazon MQ con RabbitMQ en AWS</a>
+                <ul>
+                    <li><a href="#qué-es-amazon-mq">Qué es Amazon MQ</a></li>
+                    <li><a href="#requisitos">Requisitos</a></li>
+                    <li><a href="#paso-a-paso-para-crear-un-broker-de-rabbitmq">Paso a Paso para Crear un Broker de
+                            RabbitMQ</a></li>
+                    <li><a href="#buscar-el-servicio">Buscar el servicio</a></li>
+                    <li><a href="#seleccionamos-rabbitmq">Seleccionamos RabbitMQ</a></li>
+                    <li><a href="#configuración-básica">Configuración básica</a></li>
+                    <li><a href="#configuración-adicional">Configuración adicional</a></li>
+                    <li><a href="#revisión-y-creación">Revisión y creación</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#accediendo-y-configurando-rds-desde-una-ec2">10.- Accediendo y Configurando RDS desde una
+                    EC2</a>
+                <ul>
+                    <li><a href="#inicialización-de-la-base-de-datos-rds">Inicialización de la Base de Datos RDS</a>
+                    </li>
+                    <li><a href="#estado-inicial">Estado inicial</a></li>
+                    <li><a href="#crear-instancia-ec2-temporal">Crear instancia EC2 temporal</a></li>
+                    <li><a href="#conexión-a-mysql-y-despliegue-del-esquema">Conexión a MySQL y despliegue del
+                            esquema</a></li>
+                    <li><a href="#obtener-datos-de-acceso-a-la-base-de-datos">Obtener datos de acceso a la base de
+                            datos</a></li>
+                    <li><a href="#conectar-a-mysql-desde-la-instancia">Conectar a MySQL desde la instancia</a></li>
+                    <li><a href="#clonar-el-repositorio-del-proyecto">Clonar el repositorio del proyecto</a></li>
+                    <li><a href="#ejecutar-el-script-sql">Ejecutar el script SQL</a></li>
+                    <li><a href="#verificar">Verificar</a></li>
+                    <li><a href="#limpieza">Limpieza</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#beanstalk">11.- BeanStalk</a>
+                <ul>
+                    <li><a href="#configuración-de-elastic-beanstalk">Configuración de Elastic Beanstalk</a></li>
+                    <li><a href="#creación-de-roles-iam-para-beanstalk">Creación de roles IAM para Beanstalk</a></li>
+                    <li><a href="#pasos">Pasos</a></li>
+                    <li><a href="#creación-del-entorno-beanstalk">Creación del entorno Beanstalk</a></li>
+                    <li><a href="#configuración-personalizada">Configuración personalizada</a></li>
+                    <li><a href="#configuración-de-instancias-y-escalado">Configuración de instancias y escalado</a>
+                    </li>
+                    <li><a href="#políticas-de-despliegue">Políticas de despliegue</a></li>
+                    <li><a href="#notas-finales">Notas finales</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#configuración-de-entorno-beanstalk-y-conexión-con-servicios-de-backend">
+                    12.- Configuración de entorno Beanstalk y conexión con servicios de backend
+                </a>
+                <ul>
+                    <li><a href="#pasos-para-conectar-el-entorno-beanstalk-con-los-servicios-de-backend">Pasos para
+                            conectar el entorno Beanstalk con los servicios de backend</a></li>
+                    <li><a href="#verificación-del-entorno-beanstalk">Verificación del entorno Beanstalk</a></li>
+                    <li><a href="#verificación-de-los-servicios-backend">Verificación de los servicios backend</a></li>
+                    <li><a href="#configuración-del-grupo-de-seguridad">Configuración del grupo de seguridad</a></li>
+                    <li><a href="#guardar-cambios">Guardar cambios</a></li>
+                    <li><a href="#resumen-y-preparación-para-el-siguiente-paso">Resumen y preparación para el siguiente
+                            paso</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#construcción-del-artefacto-y-configuración-del-backend">13.- Construcción del Artefacto y
+                    Configuración del Backend</a>
+                <ul>
+                    <li><a href="#recolección-de-información-del-backend">Recolección de información del backend</a>
+                    </li>
+                    <li><a href="#tips">Tips</a></li>
+                    <li><a href="#preparar-el-código-fuente">Preparar el código fuente</a></li>
+                    <li><a href="#clonación-del-repositorio">Clonación del repositorio</a></li>
+                    <li><a href="#actualización-del-archivo-application-properties">Actualización del archivo
+                            application properties</a></li>
+                    <li><a href="#construcción-del-artefacto-war">Construcción del artefacto WAR</a></li>
+                    <li><a href="#verificar-versiones">Verificar versiones</a></li>
+                    <li><a href="#compilar-proyecto">Compilar proyecto</a></li>
+                    <li><a href="#despliegue-en-elastic-beanstalk">Despliegue en Elastic Beanstalk</a></li>
+                    <li><a href="#subida-del-artefacto">Subida del artefacto</a></li>
+                    <li><a href="#proceso-de-despliegue">Proceso de despliegue</a></li>
+                    <li><a href="#habilitar-https-con-certificado-acm">Habilitar HTTPS con certificado ACM</a></li>
+                    <li><a href="#agregar-listener-https-443">Agregar listener HTTPS 443</a></li>
+                    <li><a href="#asociar-dominio-personalizado-godaddy-u-otro">Asociar dominio personalizado GoDaddy u
+                            otro</a></li>
+                    <li><a href="#en-godaddy">En GoDaddy</a></li>
+                    <li><a href="#verificación-final">Verificación final</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#aws-cloudfront-introducción-y-configuración">14.- AWS CloudFront Introducción y
+                    Configuración</a>
+                <ul>
+                    <li><a href="#qué-es-aws-cloudfront">Qué es AWS CloudFront</a></li>
+                    <li><a href="#por-qué-necesitamos-una-cdn">Por qué necesitamos una CDN</a></li>
+                    <li><a href="#cómo-se-integra-cloudfront">Cómo se integra CloudFront</a></li>
+                    <li><a href="#pasos-para-configurar-una-distribución-cloudfront">Pasos para configurar una
+                            distribución CloudFront</a></li>
+                    <li><a href="#actualizar-dns-en-godaddy">Actualizar DNS en GoDaddy</a></li>
+                    <li><a href="#resultado-final">Resultado Final</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#resumen-y-consideraciones-finales">15.- Resumen y consideraciones Finales</a>
+                <ul>
+                    <li><a href="#resumen-final-del-proyecto">Resumen Final del Proyecto</a></li>
+                    <li><a href="#consideraciones-finales">Consideraciones Finales</a></li>
+                    <li><a href="#desafios-enfrentados">Desafíos Enfrentados</a></li>
+                    <li><a href="#lecciones-aprendidas">Lecciones Aprendidas</a></li>
+                    <li><a href="#pros-y-contras-de-este-enfoque">Pros y Contras de este enfoque</a></li>
+                    <li><a href="#próximos-pasos-para-la-evolución-del-proyecto">Próximos Pasos para la Evolución del
+                            Proyecto</a></li>
+                </ul>
+            </li>
+            <li><a href="#contacto">16.- Contacto</a></li>
+        </ul>
+    </ol>
+</details>
+<br>
 
 
 
