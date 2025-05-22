@@ -5,6 +5,10 @@
 
 
 
+https://github.com/user-attachments/assets/00a840d6-06d3-41d1-8952-3c07e3c3b8c4
+
+
+
 ## 📚 Descripción del Proyecto
 
 Este proyecto consistió en **refactorizar completamente una arquitectura en AWS**, migrando de un enfoque tradicional basado en **IaaS (Infrastructure as a Service)**  a una solución moderna y optimizada utilizando **PaaS/SaaS (Platform/Software as a Service)**. Esta transformación tuvo como objetivo **reducir la complejidad operativa, mejorar la escalabilidad, facilitar el mantenimiento**  y optimizar los costos.
