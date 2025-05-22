@@ -473,7 +473,7 @@ Será perfecto para acelerar la carga de nuestro frontend, mejorar la experienci
 
 ## Inicio de la construcción del Proyecto
 
-### 1.- Configuración de Seguridad para Backend en AWS Parte de Arquitectura Beanstalk
+### Configuración de Seguridad para Backend en AWS Parte de Arquitectura Beanstalk
 
 ----------
 
@@ -565,7 +565,7 @@ Este paso es **opcional**, pero útil si necesitamos acceder a la instancia EC2 
 
 ----------
 
-## 7.- Creación de una Base de Datos con Amazon RDS para el Proyecto
+## Creación de una Base de Datos con Amazon RDS para el Proyecto
 
 
 ###  Por qué usar RDS
@@ -693,10 +693,10 @@ No queremos escalado automático, ya que éste será un proyecto de prueba, pero
 ---
 
 
-## 8.- Creación de ElastiCache Memcached en AWS
+## Creación de ElastiCache Memcached en AWS
 
 
-### 1. Acceso al servicio ElastiCache
+### Acceso al servicio ElastiCache
 
 -   Vamos a la **Consola de AWS**.
 -   Buscamos **“ElastiCache”** o también puedes escribir **“memcache”** en el buscador.
@@ -704,7 +704,7 @@ No queremos escalado automático, ya que éste será un proyecto de prueba, pero
 
 ----------
 
-### 2. Creación del Grupo de Parámetros
+### Creación del Grupo de Parámetros
 
 > Similar a como se hace en RDS.
 
@@ -724,7 +724,7 @@ No queremos escalado automático, ya que éste será un proyecto de prueba, pero
 
 ----------
 
-### 3. Creación del Grupo de Subredes
+### Creación del Grupo de Subredes
 
 1.  Vamos a **Subnet Groups**.
 2.  Clic en **Create Subnet Group**.
@@ -736,7 +736,7 @@ No queremos escalado automático, ya que éste será un proyecto de prueba, pero
 
 ----------
 
-### 4. Creación del clúster de Memcached
+### Creación del clúster de Memcached
 
 1.  Ir al **Dashboard de ElastiCache**.
 2.  Clic en **Create Cache**.
@@ -748,7 +748,7 @@ No queremos escalado automático, ya que éste será un proyecto de prueba, pero
 
 
 ----------
-### 5. Configuración del clúster
+### Configuración del clúster
 
 Completamos los siguientes campos:
 
@@ -776,7 +776,7 @@ Completamos los siguientes campos:
 
 ----------
 
-### 6. Esperamos y probamos
+### Esperamos y probamos
 
 -   La creación tomará unos minutos.
 -   Al finalizar, tendremos disponible el **endpoint** para conectarnos desde nuestra aplicación.
@@ -786,7 +786,7 @@ Completamos los siguientes campos:
 
 ---
 
-## 9.- Creación de Amazon MQ con RabbitMQ en AWS
+## Creación de Amazon MQ con RabbitMQ en AWS
 
 #### Qué es Amazon MQ
 
@@ -805,26 +805,26 @@ Es un servicio administrado de **brokers de mensajería** que soporta **RabbitMQ
 
 ### Paso a Paso para Crear un Broker de RabbitMQ
 
-#### 1. Buscar el servicio
+#### Buscar el servicio
 
 -   En la consola de AWS, escribimos `RabbitMQ` o `Amazon MQ`.
 -   Entramos al servicio **Amazon MQ**.
 
-#### 2. Seleccionamos RabbitMQ
+#### Seleccionamos RabbitMQ
 
 -   Clic en **"Create broker"**.
 -   Tipo de broker: **RabbitMQ**.
 -   Tipo de implementación: **Single-instance broker** (más económico).
 -   Siguiente.
 
-#### 3. Configuración básica
+#### Configuración básica
 
 -   **Nombre**: `vprofile-rearch-rabbitmq`
 -   **Tipo de instancia**: `mq.t3.micro` (el más pequeño)
 -   **Nombre de usuario**: `tu nombre de usuario`
 -   **Contraseña**: 12 caracteres (guardar para archivo de configuración)
 
-#### 4. Configuración adicional
+#### Configuración adicional
 
 -   **Versión del motor**: Usar la predeterminada (ej. `3.13`)
 -   **Logging**: No habilitar CloudWatch logs
@@ -834,7 +834,7 @@ Es un servicio administrado de **brokers de mensajería** que soporta **RabbitMQ
 -   **Cifrado y mantenimiento**: Usar valores por defecto
 
 
-#### 5. Revisión y creación
+#### Revisión y creación
 
 -   Revisar que todos los valores estén correctos:
     -   Instancia `mq.t3.micro`
@@ -850,7 +850,7 @@ Es un servicio administrado de **brokers de mensajería** que soporta **RabbitMQ
 
 ----------
 
-## 10.- Accediendo y Configurando RDS desde una EC2
+## Accediendo y Configurando RDS desde una EC2
 
 ### Inicialización de la Base de Datos RDS
 
@@ -958,7 +958,7 @@ SHOW TABLES;
 
 ---
 
-## 11.- BeanStalk
+## BeanStalk
 
 
 ### Configuración de Elastic Beanstalk
@@ -1072,7 +1072,7 @@ SHOW TABLES;
 ---
 
 
-## 12.- Configuración de entorno Beanstalk y conexión con servicios de backend
+## Configuración de entorno Beanstalk y conexión con servicios de backend
 
 **Objetivo:** Establecer conexión entre Elastic Beanstalk y los servicios de backend, como RDS y Amazon MQ, asegurando las reglas de seguridad adecuadas.
 
@@ -1081,7 +1081,7 @@ SHOW TABLES;
 ### Pasos para conectar el entorno Beanstalk con los servicios de backend
 
 
-#### 1. Verificación del entorno Beanstalk
+#### Verificación del entorno Beanstalk
 
 -   **Aplicación por defecto:**
     -   Al hacer clic en la URL proporcionada, debería ver la aplicación por defecto alojada en Beanstalk.
@@ -1093,7 +1093,7 @@ SHOW TABLES;
 
 ----------
 
-#### 2. Verificación de los servicios backend
+#### Verificación de los servicios backend
 
 -   **Servicios backend ya configurados:**
     -   RDS
@@ -1108,7 +1108,7 @@ SHOW TABLES;
 
 ----------
 
-#### 3. Configuración del grupo de seguridad
+#### Configuración del grupo de seguridad
 
 -   **Verificar grupo de seguridad de Beanstalk:**
     -   Seleccionar las instancias de Beanstalk desde el panel de instancias.
@@ -1129,7 +1129,7 @@ SHOW TABLES;
 
 ----------
 
-#### 4. Guardar cambios
+#### Guardar cambios
 
 -   **Guardar reglas:**
 	-   Después de añadir la regla, hacer clic en **Guardar reglas**.
@@ -1159,7 +1159,7 @@ SHOW TABLES;
 
 
 
-## 13.- Construcción del Artefacto y Configuración del Backend
+## Construcción del Artefacto y Configuración del Backend
 
 Pasos para construir y desplegar un artefacto Java (WAR) en **AWS Elastic Beanstalk**, integrando varios servicios backend (RDS, Amazon MQ, ElastiCache) y asegurando conectividad segura mediante HTTPS.
 
@@ -1336,7 +1336,7 @@ Resultado: Se crea un archivo WAR en la carpeta `/target`, por ejemplo:
 ----------
 
 
-## 14.- AWS CloudFront Introducción y Configuración
+## AWS CloudFront Introducción y Configuración
 
 
 ### Qué es AWS CloudFront
@@ -1431,7 +1431,7 @@ ofreciendo alta disponibilidad, baja latencia y mejor experiencia al usuario �
 ----------
 
 
-## 15.- Resumen y consideraciones Finales
+## Resumen y consideraciones Finales
 
 
 ### Resumen Final del Proyecto
@@ -1535,7 +1535,7 @@ Gestión de infraestructura como código (IaC), permitiendo reproducibilidad, co
 
 ---
 
-## 16.- Contacto
+## Contacto
 
 Enlace a Linkedin 
 [![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?logo=linkedin)](https://www.linkedin.com/in/diegorojasv/)<br>
