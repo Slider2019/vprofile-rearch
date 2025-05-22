@@ -18,7 +18,7 @@ Este proyecto consistió en **refactorizar completamente una arquitectura en AWS
     <summary>Tabla de Contenidos</summary>
     <ol>
         <ul>
-            <li><a href="#objetivo-del-proyecto">1.- Objetivo del proyecto</a></li>
+            <li><a href="#objetivo-del-proyecto">1.-Objetivo del proyecto</a></li>
             <li>
                 <a href="#el-problema-del-enfoque-tradicional">2.- El Problema del Enfoque Tradicional</a>
                 <ul>
