@@ -13,6 +13,9 @@ Este proyecto consistió en **refactorizar completamente una arquitectura en AWS
 
 ## Índice
 
+<!-- Tabla de contenidos -->
+<details close>
+  <summary>Tabla de Contenidos</summary>
 <ul>
   <li><a href="#objetivo-del-proyecto">1.- Objetivo del proyecto</a></li>
   <li>
