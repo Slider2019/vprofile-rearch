@@ -11,7 +11,7 @@ Este proyecto consistió en **refactorizar completamente una arquitectura en AWS
 
 ----------
 
-## 🗂️ Índice
+## Índice
 
 <ul>
   <li><a href="#objetivo-del-proyecto">1.- Objetivo del proyecto</a></li>
@@ -184,7 +184,7 @@ Ahora, en esta fase... **¡es hora de refactorizar!** Vamos a rediseñar los ser
 > 🔄 Re-arquitectura / Refactorización:
 > 
 > Mejorar agilidad, facilitar el escalado, añadir nuevas funcionalidades más rápido, reducir costes y complejidad operativa.
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 ---
 
@@ -224,7 +224,7 @@ Beneficios:
 -   Pago por uso 💳
 -   Automatización 🚀
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 ----------
 
@@ -265,7 +265,7 @@ Cuando subamos nuestro código, Elastic Beanstalk automáticamente:
     -   Integración con CloudWatch para alertas.
     -   Vistas de salud (verde, amarillo, rojo 🟢🟡🔴).
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ---
@@ -287,7 +287,7 @@ Proveerá una **base de datos MySQL completamente gestionada**, donde no nos pre
 
 Será ideal porque necesitaremos **persistencia de datos**  para nuestra aplicación (usuarios, productos, pedidos, logs, etc.). Además, al estar en RDS, podremos **automatizar backups, failover y monitoreo**, lo cual es clave en una arquitectura moderna DevOps.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ---
@@ -307,7 +307,7 @@ Nos dará una **capa de caché en memoria**, lo que significa:
 
 Nos servirá para **mejorar el rendimiento**  y la **escalabilidad**  de nuestra aplicación. En vez de consultar siempre MySQL, podremos almacenar los resultados comunes en ElastiCache y acelerar tiempos de respuesta en nuestra página.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ---
@@ -327,7 +327,7 @@ Proporcionará un **servicio de mensajería confiable**, donde los componentes d
 
 Nos permitirá **desacoplar servicios**, por ejemplo, cuando un microservicio genere un evento que otro microservicio procesa. Amazon MQ maneja **reintentos, almacenamiento de mensajes y entrega garantizada**, sin que nosotros tengamos que configurar RabbitMQ a mano.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ---
@@ -347,7 +347,7 @@ Se encargará de traducir los **nombres de dominio (como [www.tuproyecto.com](ht
 
 Será nuestro **administrador de nombres**  para que nuestra aplicación esté disponible desde internet con un dominio profesional, más opciones de **resiliencia y tráfico inteligente**.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ---
@@ -367,7 +367,7 @@ Distribuirá el **contenido estático y dinámico** de nuestra web (como imágen
 
 Será perfecto para acelerar la carga de nuestro frontend, mejorar la experiencia de usuario y **optimizar tráfico global**. Ideal si nuestra app tiene clientes en distintas regiones del mundo.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 ----------
 
@@ -384,7 +384,7 @@ Será perfecto para acelerar la carga de nuestro frontend, mejorar la experienci
 | CDN externo/manual                  | CloudFront                |
 
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ---
@@ -404,7 +404,7 @@ Será perfecto para acelerar la carga de nuestro frontend, mejorar la experienci
     -   **Amazon RDS**
 9.  🧠 **CloudWatch** gestiona alertas y escalado
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ---
@@ -439,7 +439,7 @@ Será perfecto para acelerar la carga de nuestro frontend, mejorar la experienci
     -   O GoDaddy (según convenga)
 14.  🎉 ¡Probar en la URL final!
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 ---
 
@@ -470,7 +470,7 @@ Tendremos varios servicios en el backend:
 
 🛡 Para estos servicios crearemos un **grupo de seguridad común**, llamado `Backend Security Group`.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ----------
@@ -519,7 +519,7 @@ Tendremos varios servicios en el backend:
     -   Fuente: **ID del mismo grupo de seguridad**
     -   Descripción: “Permitir tráfico interno entre servicios backend”
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ----------
@@ -544,7 +544,7 @@ Este paso es **opcional**, pero útil si necesitamos acceder a la instancia EC2 
 
 Necesitamos una base de datos para nuestra aplicación de perfiles, y usaremos Amazon RDS por sus ventajas en administración, escalabilidad y seguridad. En este proyecto trabajaremos con **MySQL 8.0**.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ----------
@@ -578,7 +578,7 @@ Permite personalizar configuraciones como `max_connections`, `query_cache_size`,
 4.  Click en **Create**.
 
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 ----------
 
@@ -597,7 +597,7 @@ Permite personalizar configuraciones como `max_connections`, `query_cache_size`,
     -   **Availability zones & subnets**: Seleccionamos todas las subredes disponibles
 4.  Click en **Create**.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ----------
@@ -627,7 +627,7 @@ Permite personalizar configuraciones como `max_connections`, `query_cache_size`,
 
 No queremos escalado automático, ya que éste será un proyecto de prueba, pero en condiciones reales, hay que activarlo.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ----------
@@ -659,7 +659,7 @@ No queremos escalado automático, ya que éste será un proyecto de prueba, pero
 -   Click en **"Create database"**.
 -   AWS comenzará el aprovisionamiento de la instancia RDS.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ---
@@ -691,7 +691,7 @@ No queremos escalado automático, ya que éste será un proyecto de prueba, pero
 
 > ⚠️ Nota: Los parámetros avanzados no se configuraron en éste proyecto
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ----------
@@ -716,7 +716,7 @@ No queremos escalado automático, ya que éste será un proyecto de prueba, pero
 4.  Elegir el método de creación:
     -   Selecciona **Standard create** para ver todas las opciones.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ----------
@@ -753,7 +753,7 @@ Completamos los siguientes campos:
 -   La creación tomará unos minutos.
 -   Al finalizar, tendremos disponible el **endpoint** para conectarnos desde nuestra aplicación.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ---
@@ -817,7 +817,7 @@ Es un servicio administrado de **brokers de mensajería** que soporta **RabbitMQ
 
 🕐 **Esto tardará algunos minutos en aprovisionarse.**
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ----------
@@ -869,7 +869,7 @@ Es un servicio administrado de **brokers de mensajería** que soporta **RabbitMQ
         -   Tipo: `MySQL/Aurora (3306)`
         -   Fuente: SG del cliente EC2 (`cliente-wipro-mysql-sg`)
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ----------
@@ -925,7 +925,7 @@ SHOW TABLES;
 -   El propósito de la instancia EC2 fue **inicializar la BD**.
 -   Ya no es necesaria, por lo que procedemos a **terminarla desde la consola**.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ---
@@ -942,7 +942,7 @@ SHOW TABLES;
     -   Auto Scaling Group, AMI, S3 para artefactos, CloudWatch, etc.
     -   Sin costos adicionales (solo pagamos por recursos usados como EC2)
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 ---
 
@@ -960,7 +960,7 @@ SHOW TABLES;
     -   `Notificaciones de la capa web AWS Elastic Beanstalk`
 4.  Nombrar el rol (ej: `Rearch-bean`)
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ---
@@ -974,7 +974,7 @@ SHOW TABLES;
 -   **Nombre de aplicación y entorno**: Únicos y verificados
 -   **URL personalizada**: Asegurar disponibilidad
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ---
@@ -991,7 +991,7 @@ SHOW TABLES;
     -   Grupo de seguridad creado por Beanstalk (editable después)
     -   Volumen raíz: **GP3** (evitar errores de configuración obsoleta)
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ---
@@ -1011,7 +1011,7 @@ SHOW TABLES;
     -   Habilitar **Stickinness** (sticky sessions)
 
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ---
@@ -1025,7 +1025,7 @@ SHOW TABLES;
 3.  **División de tráfico**: Pruebas canarias (ej: 10% del tráfico a nueva versión).
 
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ---
@@ -1038,7 +1038,7 @@ SHOW TABLES;
 -   **Despliegue**: En los próximos pasos (subida de artefacto y pruebas).
 
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ---
@@ -1060,7 +1060,7 @@ SHOW TABLES;
 -   **Próximos pasos:**
     -   En la próxima clase, se cambiará la aplicación por la correspondiente a nuestro perfil.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ----------
@@ -1075,7 +1075,7 @@ SHOW TABLES;
     -   El entorno Beanstalk necesita conectarse a estos servicios de backend.
     -   **Grupo de seguridad backend:** Verificar que la regla de seguridad del backend permita la conexión desde Beanstalk.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ----------
@@ -1096,7 +1096,7 @@ SHOW TABLES;
     -   **Añadir regla:** Permitir todo el tráfico desde el grupo de seguridad de Beanstalk (instancia de Beanstalk).
     -   Descripción: Especificar que la regla permite el tráfico de Beanstalk a backend.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ----------
@@ -1113,7 +1113,7 @@ SHOW TABLES;
         -   Contraseña
 -   Guardar estos datos en un archivo, ya que serán necesarios en los próximos pasos para construir y desplegar el artefacto en el entorno Beanstalk.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ----------
@@ -1124,7 +1124,7 @@ SHOW TABLES;
 -   **Datos necesarios:** Recopila los endpoints y credenciales de los servicios de backend para el despliegue futuro en Beanstalk.
 
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ----------
@@ -1153,7 +1153,7 @@ Pasos para construir y desplegar un artefacto Java (WAR) en **AWS Elastic Beanst
 -   Usa notas adhesivas para almacenar temporalmente los datos sensibles.
 -   Verifica todos los endpoints y puertos cuidadosamente en el archivo `application.properties`.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ----------
@@ -1198,7 +1198,7 @@ Ubicado en `src/main/resources/application.properties`:
     ```
     
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ----------
@@ -1233,7 +1233,7 @@ Resultado: Se crea un archivo WAR en la carpeta `/target`, por ejemplo:
 
 `vprofile-rearch.war`
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 
@@ -1256,7 +1256,7 @@ Resultado: Se crea un archivo WAR en la carpeta `/target`, por ejemplo:
 -   Elastic Beanstalk actualizará las instancias de a una (rolling deployment).
 -   Ve al **target group** en EC2 → salud de instancias cambia a medida que se despliegan.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 
@@ -1274,7 +1274,7 @@ Resultado: Se crea un archivo WAR en la carpeta `/target`, por ejemplo:
 
 > Esto puede tomar varios minutos y modificará el load balancer.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ----------
@@ -1288,7 +1288,7 @@ Resultado: Se crea un archivo WAR en la carpeta `/target`, por ejemplo:
 3.  Gestiona el DNS.
 4.  Añade registros CNAME apuntando a la URL del entorno para habilitar HTTPS.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 
@@ -1302,7 +1302,7 @@ Resultado: Se crea un archivo WAR en la carpeta `/target`, por ejemplo:
     -   Contraseña: `admin_vp`
 3.  Comprueba el funcionamiento correcto de la app y conectividad con los servicios backend.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ----------
@@ -1317,7 +1317,7 @@ CloudFront es el servicio de **Content Delivery Network (CDN)** de AWS.
 
 Su propósito es **distribuir contenido globalmente con baja latencia y alta velocidad** de transferencia.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ----------
@@ -1334,7 +1334,7 @@ Su propósito es **distribuir contenido globalmente con baja latencia y alta vel
 
 > 🔁 CloudFront tiene más de 600 ubicaciones de borde que cachean el contenido y lo sirven desde la ubicación más cercana al usuario.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ----------
@@ -1374,7 +1374,7 @@ Su propósito es **distribuir contenido globalmente con baja latencia y alta vel
 
 > ⏳ Puede tardar 10 minutos en desplegarse.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ----------
@@ -1396,7 +1396,7 @@ Su propósito es **distribuir contenido globalmente con baja latencia y alta vel
 🔄 CloudFront ahora entrega el contenido desde **Edge Locations globales**,
 ofreciendo alta disponibilidad, baja latencia y mejor experiencia al usuario 🌍🚀
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 
@@ -1425,7 +1425,7 @@ Finalizado el proyecto, se llevó a cabo una **limpieza controlada** del entorno
 
 Este ejercicio representa una excelente práctica de migración cloud-native con foco DevOps.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ---
@@ -1442,7 +1442,7 @@ Este ejercicio representa una excelente práctica de migración cloud-native con
 
 Estos retos permitieron consolidar una visión más profunda sobre cómo se interconectan los servicios en la nube y cómo planificar una arquitectura resiliente desde el inicio.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ---
@@ -1455,7 +1455,7 @@ Estos retos permitieron consolidar una visión más profunda sobre cómo se inte
 ✅ Entender el flujo de red (desde DNS hasta instancia) es crucial para diagnosticar problemas  
 ✅ Practicar la documentación durante el desarrollo facilita futuras iteraciones y colaboraciones
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ---
@@ -1476,7 +1476,7 @@ Estos retos permitieron consolidar una visión más profunda sobre cómo se inte
 • Gestión manual de algunos recursos al no usar IAC (Infrastructure as Code)  
 • Costos potenciales si no se configura correctamente la infraestructura
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ---
@@ -1494,7 +1494,7 @@ Automatización de la configuración y despliegue de servicios en servidores o c
 📦 **Terraform**  
 Gestión de infraestructura como código (IaC), permitiendo reproducibilidad, control de versiones y despliegues más seguros en AWS.
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 
 ---
@@ -1503,7 +1503,7 @@ Gestión de infraestructura como código (IaC), permitiendo reproducibilidad, co
 ## 🙌 **Si, has llegado hasta aquí, ¡Gracias por leer!. 
 ### Si te interesa ver el código o probarlo, clona el repo y comienza tu propia aventura y si tienes alguna consulta o duda, enviame un mensaje privado por linkedin
 
-<p align="right">(<a href="#🗂️-índice">Volver al inicio</a>)</p>
+<p align="right">(<a href="#índice">Volver al inicio</a>)</p>
 
 ---
 
