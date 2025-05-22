@@ -1537,6 +1537,9 @@ Gestión de infraestructura como código (IaC), permitiendo reproducibilidad, co
 
 ## Contacto
 
-Enlace a Linkedin 
-[![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?logo=linkedin)](https://www.linkedin.com/in/diegorojasv/)<br>
+### Enlace a Linkedin 
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?logo=linkedin)](https://www.linkedin.com/in/diegorojasv/)
+<br>
+
+
 💬 💡**TIP**:  Haz clic con el botón derecho o Ctrl+clic para abrir en una pestaña nueva y no salir de GitHub 😉
